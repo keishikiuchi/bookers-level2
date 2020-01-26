@@ -1,0 +1,61 @@
+<p>user メモ</p>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4">
+<h1>User info</h1>
+<table class="table table-striped">
+
+<%= form_for(@user) do |f| %>
+
+<div class="profile-container">
+
+<h3>name</h3><%= @user.name %>
+
+<h3>introduction</h3>
+<h4 class="introduction"><%= @user.introduction %></h4>
+
+<%= attachment_image_tag @user, :profile_image %>
+    
+<% if @user.id == current_user.id %>
+<p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+ 
+<% end %>
+</div>
+
+<% end %>
+
+</table>
+</div>
+
+<div class="col-lg-8">
+<h1>Users</h1>
+<table class="table table-striped">
+<thead>
+	<tr>
+		<th>Image</th>
+		<th>Name</th>
+		
+	</tr>
+</thead>
+
+<tbody>
+
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+<h1>New book</h1>
+<%= form_for(@book) do |f| %>
+
+	<h4>Title</h4>
+	<%= f.text_field :title %>
+
+	<h4>Opinion</h4>
+	<%= f.text_area :body %>
+
+	<p><%= f.submit 'Create book' %></p>
+<% end %>
